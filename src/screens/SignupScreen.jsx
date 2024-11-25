@@ -7,7 +7,7 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import { colors } from '../utils/colors';
 import { fonts } from '../utils/font';
 
-const LoginScreen = () => {
+const SingupScreen = () => {
     const navigation = useNavigation();
     const [secureEntry, setSecureEntry] = useState(true); // Correctly initialize useState
 
@@ -15,8 +15,8 @@ const LoginScreen = () => {
         navigation.goBack();
     };
 
-    const handleSingup = () => {
-        navigation.navigate('Signup');
+    const handleLogin = () => {
+        navigation.navigate('Login');
     };
 
     return (
@@ -32,9 +32,8 @@ const LoginScreen = () => {
 
             {/* Welcome text */}
             <View style={styles.textContainer}>
-                <Text style={styles.headingText}>Hey,</Text>
-                <Text style={styles.headingText}>Welcome</Text>
-                <Text style={styles.headingText}>Back</Text>
+                <Text style={styles.headingText}>Let's get,</Text>
+                <Text style={styles.headingText}>Started</Text>
             </View>
 
             {/* Form */}
@@ -51,6 +50,22 @@ const LoginScreen = () => {
                         placeholder="Enter Your Email"
                         placeholderTextColor={colors.secondary}
                         keyboardType="email-address"
+                    />
+                </View>
+
+                {/* Phone Number input */}
+                <View style={styles.inputContainer}>
+                    <SimpleLineIcons 
+                        name={"screen-smartphone"} 
+                        size={30} 
+                        color={colors.secondary} 
+                    />
+                    <TextInput 
+                        style={styles.textinput}
+                        placeholder="Enter Your Phone no"
+                        placeholderTextColor={colors.secondary}
+                        secureTextEntry={secureEntry}
+                        keyboardType="phone-pad"
                     />
                 </View>
 
@@ -78,12 +93,14 @@ const LoginScreen = () => {
                     </TouchableOpacity>
                 </View>
 
-                {/*forgot password*/}
-                <TouchableOpacity>
+                {/* forgot password
+                <TouchableOpacity>   
                 <Text style={styles.forgotPasswordText}>Forget password?</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
+
+               {/*Login Button*/} 
                 <TouchableOpacity style={styles.loginButtonWrapper}>
-                    <Text style={styles.loginText}>Login</Text>
+                    <Text style={styles.loginText}>Sign Up</Text>
                 </TouchableOpacity>
                 <Text style={styles.continueText}>or continue with</Text>
                 <TouchableOpacity style={styles.googleButtonContainer}>
@@ -93,9 +110,9 @@ const LoginScreen = () => {
 
                 {/*footer*/}
                 <View style={styles.footerText}>
-                    <Text style={styles.accountText}>Don't have an account ?</Text>
-                    <TouchableOpacity onPress={handleSingup}>
-                    <Text style={styles.signUpText}>Sign up</Text>
+                    <Text style={styles.accountText}>Already have an Account!</Text>
+                    <TouchableOpacity onPress={handleLogin}>
+                    <Text style={styles.signUpText}>Login</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -103,7 +120,7 @@ const LoginScreen = () => {
     );
 };
 
-export default LoginScreen;
+export default SingupScreen;
 
 const styles = StyleSheet.create({
     container: {
